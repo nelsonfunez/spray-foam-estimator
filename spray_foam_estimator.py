@@ -76,7 +76,7 @@ st.markdown(pdf_link, unsafe_allow_html=True)
 
 # Feature 3: QR code with link to app
 st.subheader("🔗 Share This App")
-app_url = st.text_input("Enter your app URL", "https://your-app-name.streamlit.app")
+app_url = st.text_input("Enter your app URL", "https://spray-foam-estimator-hnqppahtiqzfkmy23e3udg.streamlit.app")
 qr = qrcode.make(app_url)
 buffer = io.BytesIO()
 qr.save(buffer)
