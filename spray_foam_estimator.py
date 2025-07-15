@@ -64,10 +64,9 @@ def generate_pdf(text):
     pdf.set_font("Arial", size=12)
     for line in text.strip().split('\n'):
         pdf.cell(200, 10, txt=line, ln=1)
-    buffer = io.BytesIO()
-    pdf.output(buffer, 'F')  # 'F' = write to file-like object
-    buffer.seek(0)
-    return buffer
+    pdf_bytes = pdf.output(dest='S').encode('latin1')  # Get PDF as string
+    return io.BytesIO(pdf_bytes)
+
 
 
 pdf_buffer = generate_pdf(summary)
