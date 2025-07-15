@@ -65,8 +65,10 @@ def generate_pdf(text):
     for line in text.strip().split('\n'):
         pdf.cell(200, 10, txt=line, ln=1)
     buffer = io.BytesIO()
-    pdf.output(buffer)
+    pdf.output(buffer, 'F')  # 'F' = write to file-like object
+    buffer.seek(0)
     return buffer
+
 
 pdf_buffer = generate_pdf(summary)
 b64_pdf = base64.b64encode(pdf_buffer.getvalue()).decode()
